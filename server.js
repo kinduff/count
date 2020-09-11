@@ -2,6 +2,7 @@
 
 // Deps
 const express = require('express');
+const cors = require("cors");
 const redis = require("redis");
 const client = redis.createClient(process.env.REDIS_URL);
 
@@ -24,6 +25,7 @@ Object.defineProperty(String.prototype, 'hashCode', {
 
 // App
 const app = express();
+app.use(cors());
 app.get('/*', function (req, res) {
   const hash = req.url.hashCode() + "";
   client.incr(hash, function(err, reply) {
