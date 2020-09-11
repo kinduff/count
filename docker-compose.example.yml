@@ -15,5 +15,9 @@ services:
       - REDIS_URL=redis://redis
       - HOST=0.0.0.0
       - PORT=3000
+    expose:
+      - 3000
+    ports:
+      - 3000
     restart:
       always
